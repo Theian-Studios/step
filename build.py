@@ -346,6 +346,8 @@ def main():
         """Links in site.json are written from the site root ("about.html"); add the base path."""
         if href == "donate":
             return donate
+        if href.startswith("index.html#"):  # a section of the home page: link to "/#id", not "/index.html#id"
+            return base + href[len("index.html"):]
         return href if re.match(r"^(https?:|mailto:|#)", href) else base + href
 
     # Partials are reusable snippets. The support band is filled per page (see support_band below).
@@ -374,7 +376,8 @@ def main():
 
     def menu(current):
         """Header and footer menus from site.json → menu. `current` underlines the page you're on.
-        An item with "header": false appears only in the footer, and "footer_label" renames it there."""
+        An item with "header": false appears only in the footer, "footer": false only in the header,
+        and "footer_label" renames it in the footer."""
         header, footer = [], []
         for item in site["menu"]:
             href = esc(site_link(item["href"]))

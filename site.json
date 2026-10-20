@@ -22,6 +22,7 @@
     {"label": "Stories", "href": "stories/", "page": "stories"},
     {"label": "Employers", "footer_label": "For employers", "href": "hire.html", "page": "hire"},
     {"label": "Questions", "href": "how-it-works.html#faq", "header": false},
+    {"label": "Get involved", "href": "index.html#get-involved", "footer": false},
     {"label": "Contact", "href": "contact.html", "page": "contact"}
   ],
   "support": {

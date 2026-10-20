@@ -26,6 +26,7 @@
       toggle.setAttribute("aria-expanded", String(open));
     };
     toggle.addEventListener("click", () => setOpen(!nav.classList.contains("is-open")));
+    nav.addEventListener("click", (e) => { if (e.target.closest("a")) setOpen(false); });
     document.addEventListener("click", (e) => {
       if (nav.classList.contains("is-open") && !nav.contains(e.target) && !toggle.contains(e.target)) setOpen(false);
     });
