@@ -488,6 +488,8 @@ strong { font-weight: 600; }
 .ledger li { position: relative; padding-left: 20px; }
 .ledger li::before { content: ""; position: absolute; left: 0; top: 0.62em; width: 9px; height: 6px; border-radius: 1px; background: var(--step-1); }
 .ledger--2col { grid-template-columns: 1fr 1fr; column-gap: 32px; margin: 22px 0 0; }
+.results .ledger { font-size: var(--text-md); gap: 14px; margin-top: 0; }
+.results__note { color: var(--muted); max-width: 40em; margin: 0; }
 @media (max-width: 560px) { .ledger--2col { grid-template-columns: 1fr; } }
 
 
@@ -733,17 +735,17 @@ strong { font-weight: 600; }
 }
 
 /* ---------- Program stages (How it works) ----------
-   Each stage is a row: a filled step bar and title on the left, plain steps on the right. */
+   Each stage is a row: the staircase so far and the title on the left, plain steps on the right.
+   The staircase adds one step per stage (bottom step first), stepping up to the right like the logo. */
 .section--stage { padding: 64px 0; }
 .stage { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 24px 64px; }
-.stage__bar {
-  display: flex; align-items: center; height: 56px; padding: 0 18px; border-radius: 3px; margin-bottom: 20px;
-  color: var(--on-dark); font: 700 var(--text-num)/1 var(--sans);
+.stage__stairs { display: flex; flex-direction: column-reverse; gap: 8px; margin-bottom: 20px; }
+.stage__stairs span {
+  display: flex; align-items: center; width: 60%; height: 48px; padding: 0 16px; border-radius: 3px;
+  background: var(--step-1); color: var(--on-dark); font: 700 var(--text-2xl)/1 var(--sans);
 }
-.stage__bar { width: 100%; }
-.stage--1 .stage__bar { background: var(--step-1); }
-.stage--2 .stage__bar { background: var(--step-2); }
-.stage--3 .stage__bar { background: var(--step-3); color: var(--navy); }
+.stage__stairs span:nth-child(2) { margin-left: 20%; background: var(--step-2); }
+.stage__stairs span:nth-child(3) { margin-left: 40%; background: var(--step-3); color: var(--navy); }
 .stage__head h2 { font-size: clamp(1.6rem, 2.6vw, 2rem); margin-bottom: 8px; }
 .stage__head p { margin: 0; color: var(--muted); }
 .stage__items { display: grid; gap: 28px; }
@@ -752,7 +754,8 @@ strong { font-weight: 600; }
 @media (max-width: 900px) {
   .section--stage { padding: 44px 0; }
   .stage { grid-template-columns: 1fr; }
-  .stage__bar { height: 48px; font-size: var(--text-2xl); margin-bottom: 16px; }
+  .stage__stairs { max-width: 340px; margin-bottom: 16px; }
+  .stage__stairs span { height: 40px; }
 }
 
 /* ---------- The Record Linking Lab (How it works) ---------- */
